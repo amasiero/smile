@@ -1,0 +1,9 @@
+<div id="filter-table">
+	<form id="form-filter" action="{{ url_for('main.donations') }}">
+		<label
+			><input type="checkbox" name="filter" id="filter" {{ 'checked' if filter
+			== 'on' else ''}} /> Mostrar todos</label
+		>
+	</form>
+</div>
+<script src="{{ url_for('static', filename='js/filter.js') }}"></script>

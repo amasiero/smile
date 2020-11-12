@@ -1,0 +1,17 @@
+{% extends '_base.html' %} {% block content %} {% include 'partials/_menu.html'
+%}
+<main class="main-content">
+	<section class="content">
+		<h1>Procure pelo item desejado</h1>
+		<form action="{{ url_for('main.search') }}" method="POST">
+			<input
+				type="search"
+				name="item"
+				placeholder="Digite o item desejado..."
+			/>
+		</form>
+		<h1 class="lg-mt">Resultado da Pesquisa</h1>
+		{% include 'partials/_donation_table.html' %}
+	</section>
+</main>
+{% endblock %}

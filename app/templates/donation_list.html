@@ -1,0 +1,10 @@
+{% extends '_base.html' %} {% block content %} {% include 'partials/_menu.html'
+%}
+<main class="main-content">
+	<section class="content">
+		<h1>Agendamentos</h1>
+		{% include 'partials/_filter_collected.html' %} {% include
+		'partials/_donation_table.html' %}
+	</section>
+</main>
+{% endblock %}

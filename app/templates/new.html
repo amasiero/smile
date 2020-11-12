@@ -1,0 +1,83 @@
+{% extends '_base.html'%} {% block content %} {% include 'partials/_menu.html'
+%}
+
+<main class="main-content">
+	<section class="form-donation">
+		<form action="{{ url_for('main.donation') }}" method="POST">
+			{% if donation.id %}
+			<input type="hidden" name="id" value="{{ donation.id }}" />
+			{% endif %}
+			<div class="data-group">
+				<h2>Doador</h2>
+				<hr />
+				<div class="form-container">
+					<label for="donator">Nome</label>
+					<input
+						type="text"
+						name="donator"
+						id="donator"
+						class="form-control"
+						placeholder="Ex: Andrey Masiero"
+						value="{{ donation.donator }}"
+						required
+					/>
+				</div>
+				<div class="form-container">
+					<label for="address">Endereço</label>
+					<input
+						type="text"
+						name="address"
+						id="address"
+						class="form-control"
+						placeholder="Ex: Av. Lins de Vasconcelos, 1222"
+						value="{{ donation.address }}"
+					/>
+				</div>
+			</div>
+			<div class="data-group">
+				<h2>Doação</h2>
+				<hr />
+				<div class="form-container">
+					<label for="item">Descrição</label>
+					<input
+						type="text"
+						name="item"
+						id="item"
+						class="form-control"
+						placeholder="Ex: Batmóvel"
+						value="{{ donation.item }}"
+						required
+					/>
+				</div>
+				<div class="form-container">
+					<label>Precisa desmonte?</label>
+					<div class="form-group">
+						<label
+							><input type="radio" name="dismount" value="True" /> Sim</label
+						>
+						<label>
+							<input type="radio" name="dismount" value="False" checked />
+							Não
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-container">
+				<label for="date">Data da coleta</label>
+				<input
+					type="date"
+					name="date"
+					id="date"
+					class="form-control"
+					value="{{ donation.date.strftime('%Y-%m-%d') if donation.date else '' }}"
+					required
+				/>
+			</div>
+			<button class="btn-primary">
+				{{ 'Atualiza' if donation.id else 'Agenda' }}
+			</button>
+		</form>
+	</section>
+</main>
+
+{% endblock %}

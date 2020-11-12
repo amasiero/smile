@@ -1,0 +1,41 @@
+{% if donations %}
+<table>
+	<thead>
+		<tr>
+			<th>Doador</th>
+			<th>Item</th>
+			<th>Desmonte</th>
+			<th>Data</th>
+			<th>Ações</th>
+		</tr>
+	</thead>
+	<tbody id="donations">
+		{% for donation in donations %}
+		<tr
+			id="donation_{{ donation.id }}"
+			class="{{ 'collected' if donation.collected else '' }}"
+		>
+			<td>{{ donation.donator }}</td>
+			<td>{{ donation.item }}</td>
+			<td>{{ 'Sim' if donation.dismount else 'Não' }}</td>
+			<td>{{ donation.date.strftime('%d/%m/%Y') }}</td>
+			<td>
+				<div class="btn-actions {{'without-check' if not with_check else ''}}">
+					<a href="{{ url_for('main.get_donation', _id=donation.id) }}"
+						><i class="fas fa-info-circle"></i
+					></a>
+					{% if with_check %}
+					<a href="#" data-ref="{{ donation.id }}" data-type="update">
+						<i class="fas fa-check-circle"></i>
+					</a>
+					{% endif %}
+				</div>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% else %}
+<p>Não temos itens agendados no momento.</p>
+{% endif %}
+<script src="{{ url_for('static', filename='js/collect.js')}}"></script>
