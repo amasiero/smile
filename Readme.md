@@ -69,11 +69,11 @@ DATABASE_URL='mysql+pymysql://<user>:<password>@<hostname>:<port>/<database>'
 
 > Don´t forget to type your´s system info on above url.
 
-After that execute db_create.py script:
+<!-- After that execute db_create.py script:
 
 ```
 python db_create.py
-```
+``` -->
 
 Now your database is ready to fly!
 

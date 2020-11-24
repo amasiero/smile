@@ -11,4 +11,9 @@ def create_app(config_file='settings.py'):
 
     db.init_app(app)
 
+    @app.before_first_request
+    def create_db():
+        print('Creating database...')
+        db.create_all()
+
     return app
